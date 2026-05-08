@@ -10,6 +10,7 @@
     try {
       var currentTabIndex = sessionStorage.getItem('fhir-resource-tab-index');
     } catch(exception) {
+      console.log('Error accessing sessionStorage: ' + exception);
     }
 
     if (!currentTabIndex)
@@ -18,12 +19,12 @@
     $( '#tabs' ).tabs({
       active: currentTabIndex,
       activate: function( event, ui ) {
-        var active = $('.selector').tabs('option', 'active');
         currentTabIndex = ui.newTab.index();
         document.activeElement.blur();
         try {
           sessionStorage.setItem('fhir-resource-tab-index', currentTabIndex);
         } catch(exception) {
+          console.log('Error writing to sessionStorage: ' + exception);
         }
       }
     });
@@ -38,21 +39,21 @@
   </script>
   <script type="text/javascript">
    $(document).ready(function(){
-	
+    
 
 
-	   
-	   
-		$( "#Adownload" ).on( "click", function() {
-		  
-			$( "#orig" ).css("display", "none");
-			$( "#download" ).css("display", "");
+       
+       
+        $( "#Adownload" ).on( "click", function() {
+          
+            $( "#orig" ).css("display", "none");
+            $( "#download" ).css("display", "");
 
-			$("ul.nav-tabs ").children("li").removeClass();
-			$( "#Adownload" ).addClass("active");	
+            $("ul.nav-tabs ").children("li").removeClass();
+            $( "#Adownload" ).addClass("active");   
 
-		} );
-	} );
+        } );
+    } );
 </script>    
   <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->

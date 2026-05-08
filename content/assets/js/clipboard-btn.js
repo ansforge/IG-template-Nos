@@ -4,7 +4,7 @@ $('.btn-copy').tooltip({
   placement: 'bottom' 
 });
 
-function setTooltip(message) {
+function setTooltip(event, message) {
   button = $(event.target)
   oldMsg = button.tooltip().attr('data-original-title')
   button.tooltip()
@@ -22,9 +22,9 @@ function setTooltip(message) {
 var clipboard = new ClipboardJS('.btn-copy');
 
 clipboard.on('success', function(e) {
-  setTooltip('Copied!');
+  setTooltip(e, 'Copied!');
 });
 
 clipboard.on('error', function(e) {
-  setTooltip('Failed :( - copy manually');
+  setTooltip(e, 'Failed :( - copy manually');
 });
