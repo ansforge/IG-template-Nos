@@ -1,27 +1,27 @@
 $(document).ready(function(){
 
-	$('div.accord').each(function(indextable) { 
-	    var id= $(this).find("div.accordion-body").attr("id");
-	    $(this).find("H3.accordion-heading").append('<a class="accordion-toggle" data-toggle="collapse" href="#' + id  +'"><i class="gg-chevron-down"></i></a>');
-	});
+    $('div.accord').each(function(indextable) { 
+        var id= $(this).find("div.accordion-body").attr("id");
+        $(this).find("H3.accordion-heading").append('<a class="accordion-toggle" data-toggle="collapse" href="#' + id  +'"><i class="gg-chevron-down"></i></a>');
+    });
 
 
-	
-	$("#terminologit-search-content-valueset-cld").addClass("accordion-group");
-	//$("#terminologit-search-content-valueset-cld").attr("id","logical-definition-accordion-group");
-	var logicalDefHeading = $("#terminologit-search-content-valueset-cld").find("#logical-definition-cld");
-	$(logicalDefHeading).addClass("accordion-heading");
-	$(logicalDefHeading).append('<a class="accordion-toggle" data-toggle="collapse" href="#logical-definition-cld-collapse"><i class="gg-chevron-down"></i></a>');
-	$(logicalDefHeading).next().addClass("accordion-body collapse");
-	$(logicalDefHeading).next().attr('id', 'logical-definition-cld-collapse');
+    
+    $("#terminologit-search-content-valueset-cld").addClass("accordion-group");
+    //$("#terminologit-search-content-valueset-cld").attr("id","logical-definition-accordion-group");
+    var logicalDefHeading = $("#terminologit-search-content-valueset-cld").find("#logical-definition-cld");
+    $(logicalDefHeading).addClass("accordion-heading");
+    $(logicalDefHeading).append('<a class="accordion-toggle" data-toggle="collapse" href="#logical-definition-cld-collapse"><i class="gg-chevron-down"></i></a>');
+    $(logicalDefHeading).next().addClass("accordion-body collapse");
+    $(logicalDefHeading).next().attr('id', 'logical-definition-cld-collapse');
 
-	$('.gg-chevron-down').each(function () {
-		$(this).click(function () {
-			jQuery(this).toggleClass("rotate-toggle");
-		});
-	});
+    $('.gg-chevron-down').each(function () {
+        $(this).click(function () {
+            jQuery(this).toggleClass("rotate-toggle");
+        });
+    });
 
-	
+    
      $(window).scroll(function () {
             if ($(this).scrollTop() > 50) {
                 $('#back-to-top').fadeIn();
@@ -45,16 +45,15 @@ $(document).ready(function(){
 
 $('#orig').find('table.codes').each(function(indextable) { 
 
-	$('<div class="form-group pull-right"> <input type="text"  style="height:auto;font-size:12px" class="search' + indextable +' form-control" placeholder="Recherche">  <span class="counter' + indextable + ' "></span></div>').insertBefore($(this));	
-	firstTr = $(this).find('tr:first').remove()
-	firstTr.find('td').contents().unwrap().wrap('<th>')
-	$(this).prepend($('<thead></thead>').append(firstTr))
-	$(this).addClass("results"+indextable); 
-	  $(this).addClass("table-striped");
+    $('<div class="form-group pull-right"> <input type="text"  style="height:auto;font-size:12px" class="search' + indextable +' form-control" placeholder="Recherche">  <span class="counter' + indextable + ' "></span></div>').insertBefore($(this));    
+    firstTr = $(this).find('tr:first').remove()
+    firstTr.find('td').contents().unwrap().wrap('<th>')
+    $(this).prepend($('<thead></thead>').append(firstTr))
+    $(this).addClass("results"+indextable); 
+      $(this).addClass("table-striped");
 
   $(".search"+indextable).keyup(function () {
     var searchTerm = $(".search"+indextable).val();
-    var listItem = $('.results'+indextable +' tbody').children('tr');
     var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
     
   $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
@@ -80,11 +79,11 @@ $('#orig').find('table.codes').each(function(indextable) {
 
   if(jobCount == '0') {$('.no-result').show();}
     else {$('.no-result').hide();}
-		  });
-	
+          });
+    
 });
 
 
 if($("table.codes").find('tr:eq(0) th:eq(4)').text()=='dateFin')
-	$("table.codes tr td:nth-child(5):not(:empty)").parent().children().css("background-color","#E69215");     
+    $("table.codes tr td:nth-child(5):not(:empty)").parent().children().css("background-color","#E69215");     
 });
