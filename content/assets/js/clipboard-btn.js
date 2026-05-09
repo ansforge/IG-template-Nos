@@ -19,7 +19,7 @@ function setTooltip(message) {
 
 // Clipboard
 
-var clipboard = new ClipboardJS('.btn-copy');
+const clipboard = new ClipboardJS('.btn-copy');
 
 clipboard.on('success', function(e) {
   setTooltip('Copied!');
